@@ -52,7 +52,7 @@ input, button {
     margin-left: -15rem;
     margin-top: -26.5rem;
     width: 30rem;
-    height: 78rem;
+    height: 69rem;
     overflow: hidden;
 }
 
@@ -99,7 +99,7 @@ input, button {
 }
 .login__form {
   position: absolute;
-  top: 26%;
+  top: 17%;
   left: 0;
   width: 100%;
   height: 50%;

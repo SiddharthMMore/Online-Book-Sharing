@@ -1,55 +1,129 @@
 <?php
-    session_start();
-    if(isset($_SESSION['user_id'])){
-        header('Location: ../homepage/homepage.php');
-    }
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'omegaread');
+$db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+session_start();
+if(isset($_SESSION['user_id'])){
+  header("Location: ../homepage/homepage.php");
+}
+
+// echo "connection done";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // username and password sent from form 
+
+  $myusername = mysqli_real_escape_string($db, $_POST['username_login']);
+  $mypassword = mysqli_real_escape_string($db, $_POST['password_login']);
+  // echo $myusername, $mypassword;
+
+  $sql = "SELECT user_id, password FROM customer WHERE user_id = '$myusername' and password = '$mypassword'";
+  $result = mysqli_query($db, $sql);
+  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  // $active = $row['active'];
+
+  $count = mysqli_num_rows($result);
+
+  // If result matched $myusername and $mypassword, table row must be 1 row
+
+  if ($count == 1) {
+    $_SESSION['user_id'] = $myusername;
+    header("location: ../homepage/homepage.php");
+  } else {
+    $message = "Invalid Username or Password";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+  }
+}
+
 ?>
 
 
-
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-
-      <link rel="stylesheet" href="css/style.css">
-       <link rel="stylesheet" href="../css/bootstrap.min.css">
-
-
-  
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
- 
-  <div class="cont">
-  <form action="login_success.php" method="post">
-  <div class="demo">
-    <div class="login">
-      <div class="login__check"></div>
-      <div class="login__form">
-        <div class="login__row">
-          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
-            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
-          </svg>
-          <input type="text" class="login__input name" name="username_login" placeholder="Username"/>
-        </div>
-        <div class="login__row">
-          <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
-            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
-          </svg>
-          <input type="password" class="login__input pass" name="password_login" placeholder="Password"/>
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg" name="submit" href="login_success.php">Sign In</button>
-        <p class="login__signup">Don't have an account? &nbsp;<a href="../signup/signup.php">Sign up</a></p>
-      </div>
+    <div class="cont">
+        <form action="login.php" method="post">
+            <div class="demo">
+                <div class="login">
+                    <!-- <div class="login__check"></div> -->
+                    <!-- <img src="../img/omegareadlogofinal.png" ALT="some text" WIDTH=200 HEIGHT=180> -->
+                    <div class="logo">
+                        <style>
+                            h1 {
+                                font-style: normal;
+                                font-variant-ligatures: normal;
+                                font-variant-caps: normal;
+                                font-variant-numeric: normal;
+                                font-variant-east-asian: normal;
+                                font-weight: normal;
+                                font-stretch: normal;
+                                font-size: 50px;
+                                line-height: normal;
+                                font-family: Cookie, cursive;
+                                position: absolute;
+                                top: 20%;
+                                right: 20%;
+                                width: 200px;
+                                height: 100px;
+                            }
+
+                            span {
+                                color: #5383d3;
+                            }
+                        </style>
+                        <h1> Omega<span>read</span> </h1>
+                    </div>
+                    <div class="login__form">
+                        <div class="login__row">
+                            <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+                                <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+                            </svg>
+                            <input type="text" class="login__input name" name="username_login" placeholder="Username" />
+                        </div>
+                        <div class="login__row">
+                            <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+                                <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+                            </svg>
+                            <input type="password" class="login__input pass" name="password_login" placeholder="Password" />
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" name="submit" href="login_success.php">Log In</button>
+                        <p class="login__signup">Don't have an account? &nbsp;<a href="../signup/signup.php">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </form>>
     </div>
-    <!-- <!-- <div class="app">
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="app">
       <div class="app__top">
         <div class="app__menu-btn">
           <span></span>
@@ -118,18 +192,3 @@
         </svg>
       </div>
     </div> --> 
-  </div>
-</form>>
-</div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
-</html>

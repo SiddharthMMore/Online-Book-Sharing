@@ -47,12 +47,12 @@ input, button {
 
 .demo {
   position: absolute;
-  top: 50%;
+  top: 63%;
   left: 50%;
   margin-left: -15rem;
   margin-top: -26.5rem;
   width: 30rem;
-  height: 53rem;
+  height: 38rem;
   overflow: hidden;
 }
 

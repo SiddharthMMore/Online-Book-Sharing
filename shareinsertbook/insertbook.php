@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             edition = '$edition'";
     $alreadyexist = mysqli_query($conn, $alreadyexist);
     if (!mysqli_num_rows($alreadyexist) && $book_name != "") {
-        $sql = "insert into books(user_id,book_name,author,edition,genre,description,mobilenumber, email) values('$userid','$book_name','$author','$edition','$genre','$description','$mobilenumber','$email')";
+        $sql = "insert into books(user_id,book_name,author,edition,genre,description) values('$userid','$book_name','$author','$edition','$genre','$description')";
         mysqli_query($conn, $sql);
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             font-variant-east-asian: normal;
                             font-weight: normal;
                             font-stretch: normal;
-                            font-size: 50px;
+                            font-size: 30px;
                             line-height: normal;
                             font-family: Cookie, cursive;
                             position: absolute;
@@ -81,10 +81,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             color: #5383d3;
                         }
                     </style>
-                    <h1> Omega<span>read</span> </h1>
+                    <h1> Share a <span>book</span> </h1>
                 </div>
                 <div class="login__form">
-                    <form action="insertbook.php" method="post">
+                    <form action="insertbook.php" method="POST">
                         <div class="login__row">
                             <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
                                 <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
@@ -159,7 +159,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
-
-<?php
-include_once('..\footer\footer.html');
-?> 

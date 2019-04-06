@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 $con = mysqli_connect('localhost', 'root', '', 'omegaread');
 $userid = $_SESSION['user_id'];
-$query = "select book_id,book_name, author, edition, genre, description, mobilenumber, email from books where user_id != '$userid'";
+$query = "select book_id,book_name, author, edition, genre, description, email from books natural join customer where user_id != '$userid'";
 $result = mysqli_query($con, $query);
 ?>
 <!DOCTYPE html>
@@ -40,10 +40,10 @@ $result = mysqli_query($con, $query);
     </div>
 
 
-    <h1><span class="blue">&lt;</span>Available<span class="blue">&gt;</span> <span class="yellow">Books</pan>
+    <h1><span class="blue">&lt;</span>Available<span class="blue">&gt;</span> <span class="yellow">Books</span>
     </h1>
     <h2></h2>
-
+    <h2> For More details contact the Mobile number or Drop an Email on the Email Address </h2>
     <table class="container">
         <thead>
             <tr>
@@ -78,11 +78,8 @@ $result = mysqli_query($con, $query);
     </table>
 
 
-    <h2> For More details contact the Mobile number or Drop an Email on the Email Address </h2>
+    
 </body>
 
 </html>
 
-<?php
-include_once('..\footer\footer.html');
-?> 

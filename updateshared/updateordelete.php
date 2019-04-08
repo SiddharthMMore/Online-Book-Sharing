@@ -30,8 +30,6 @@
         // mysqli_query($con, $query);
         
         $_SESSION['book_id'] = $bookid;
-        header("Location: updatebook/updatebook.php?&book_name=".$book_name.
-        "&author=".$author. "&edition=".$edition."&genre=".$genre."&description=".$description); // Done till here
-        exit();
+        header("Location: updatebook/updatebook.php?&book_name=".$book_name."&author=".$author."&edition=".$edition."&genre=".$genre."&description=".$description); // Done till here
     }
 ?>

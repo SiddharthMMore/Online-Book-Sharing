@@ -43,7 +43,7 @@ $result = mysqli_query($con, $query);
     <h1><span class="blue">&lt;</span>Available<span class="blue">&gt;</span> <span class="yellow">Books</span>
     </h1>
     <h2></h2>
-    <h2> For More details contact the Mobile number or Drop an Email on the Email Address </h2>
+    <h2> For more details click the contact button and wait for respond email from the Supplier </h2>
     <table class="container">
         <thead>
             <tr>
@@ -65,7 +65,7 @@ $result = mysqli_query($con, $query);
                 <td> <?php echo $rows['edition']; ?></td>
                 <td> <?php echo $rows['genre']; ?></td>
                 <td> <?php echo $rows['description']; ?></td>
-                <td> <?php echo "<p><a href=mailto:" . $rows['email'] . ">" . $rows['email'] . "</a></p>"; ?></td>
+                <td> <?php echo "<form action='sendmail.php' method='POST'><button type='submit' name = 'book_data' value=".$rows['book_id'].">Contact</button></form>"; ?></td> 
             </tr>
 
 
@@ -82,4 +82,11 @@ $result = mysqli_query($con, $query);
 </body>
 
 </html>
+
+<!-- <td>  -->
+    <?php 
+    // echo "<p><a href=mailto:" . $rows['email'] . ">" . $rows['email'] . "</a></p>"; ?>
+
+<!-- </td>  -->
+
 

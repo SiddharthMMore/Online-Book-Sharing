@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2019 at 08:30 PM
+-- Generation Time: Apr 08, 2019 at 09:47 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -30,28 +30,31 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `books` (
   `book_id` int(10) NOT NULL,
-  `user_id` varchar(255) NOT NULL,
   `book_name` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `edition` varchar(255) NOT NULL,
   `genre` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `mobilenumber` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `user_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`book_id`, `user_id`, `book_name`, `author`, `edition`, `genre`, `description`, `mobilenumber`, `email`) VALUES
-(1, 'dharmesh', 'dharmesh', 'kljdklsafjklj', 'kljkldjafkljkl', 'jkjdklflajkljfh', 'dafkjdhfuahdf', '', ''),
-(2, 'lkjklj', 'akash', 'kljdsajfk', 'jkljdksjaklfj', 'kjkldsjalkfj', 'kljkldfsjaklfj', '', ''),
-(3, 'jkljdaklfj', 'prateek', 'jkjdkajflkj', 'kljdklajflkj', 'lkjklfdjaklfjkl', 'jkljfdaklsfjlk', '', ''),
-(11, 'rahulsahu', 'Backchodi', 'Rahul Sahu', '1', 'Read', 'Only Backchodi ', '8173014504', 'rs8489501@gmail.com'),
-(27, 'dharmesh', 'dharmesh', 'kljdklsafjklj', 'kljkldjafkljkl', 'jkjdklflajkljfh', 'dafkjdhfuahdf', '7123477123', 'dha9672632716@gmail.com'),
-(28, 'dharmesh', 'dharmesh', 'kljdklsafjklj', 'kljkldjafkljkl', 'jkjdklflajkljfh', 'dafkjdhfuahdf', '7123477123', 'dha9672632716@gmail.com'),
-(29, 'dharmesh', 'dharmesh', 'kljdklsafjklj', 'kljkldjafkljkl', 'jkjdklflajkljfh', 'dafkjdhfuahdf', '7123477123', 'dha9672632716@gmail.com');
+INSERT INTO `books` (`book_id`, `book_name`, `author`, `edition`, `genre`, `description`, `user_id`) VALUES
+(37, 'Alice\'s Adventures in Wonderland\r\n', 'Lewis Carroll', '1', 'Novel', 'The most famous book in good condition', 'siddharth'),
+(38, 'Frankenstein\r\n', 'Mary Shelley', '1', 'Novel', 'My favorite novel in good state', 'siddharth'),
+(39, 'The Catcher in the Rye\r\n', 'J. D. Salinger', '1', 'Novel', 'In good state', 'siddharth'),
+(41, 'Lolita\r\n', 'Vladimir Nabokov', '1', 'Novel', 'The state is good anyone interested?', 'rahulsahu'),
+(42, 'Winnie-the-Pooh\r\n', 'A. A. Milne', '1', 'Children\'s literature, Fiction', 'My childhood book for someone else\'s childhood ', 'rahulsahu'),
+(43, 'Little Women\r\n', 'Louisa May Alcott', '3', 'Novel', 'good state', 'rahulsahu'),
+(44, 'One Hundred Years of Solitude\r\n', 'Gabriel García Márquez', '2', 'Novel', 'In a good state', 'dhar1mesh'),
+(45, 'Great Expectations\r\n', 'Charles Dickens', '4', 'Novel', 'Good state', 'dhar1mesh'),
+(46, 'The Cat in the Hat', 'Dr. Seuss', '2', 'Children\'s literature, Picture book, Fiction', 'In good state', 'dhar1mesh'),
+(47, 'War and Peace\r\n', 'Leo Tolstoy', '4', 'Novel', 'A good novel', 'dhar1mesh'),
+(48, 'Beloved\r\n', 'Toni Morrison', '5', 'Novel', 'Best of Toni Morrison', 'siddharth'),
+(49, 'asfjdla', 'kjdslafk', 'kjdkasfjkj', 'kljk', 'kljfdkjkl', 'rahulsahu');
 
 -- --------------------------------------------------------
 
@@ -77,9 +80,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`user_id`, `email`, `password`, `first_name`, `last_name`, `area`, `locality`, `city`, `mobile_no`, `pincode`) VALUES
-('dharmesh', 'dha9672632716@gmail.com', 'dharmesh', 'Dharmesh', 'Yadav', 'Manit', 'Mata', 'Bhopal', '7123477123', 462003),
-('kapilmore', 'sik@gmail.com', '$2y$10$iMvS5nxVY6Pgy21g5Cld6O2o3K.LPnSvgUVs2b6NjilBQCu0nenp6', 'kapil', 'more', 'DHule', 'dhule', 'dhule', '546356345', 424001),
-('lazyultron', 'sid94048.more@gmail.com', '$2y$10$qqEcpklG77yCDDvsgAu0.uHVlv9TCbZtA1AICWCMdSQyWoqqFck0a', 'siddharth', 'more', 'Manit', 'mata', 'bhopal', '878548375', 462003),
+('akasharsude', 'arsude.akash@gmail.com', 'akash', 'Akash', 'Arsude', 'MANIT', 'Near Mata Mandir', 'Bhopal', '677867897', 462003),
+('dhar1mesh', 'dhrmeshydv@gmail.com', 'dhar1mesh', 'Dharmesh', 'Yadav', 'MANIT', 'Near Mata Mandir', 'Bhopal', '9782072145', 462003),
 ('rahulsahu', 'rs8489501@gmail.com', 'rahulsahu', 'Rahul', 'Sahu', 'Manit', 'Mata', 'Bhopal', '8173014504', 462003),
 ('siddharth', 'sid94048.more@gmail.com', 'thermo1020', 'Siddharth', 'More', 'Bhopal', 'Manit', 'Bhopal', '2147483647', 462003);
 
@@ -91,7 +93,8 @@ INSERT INTO `customer` (`user_id`, `email`, `password`, `first_name`, `last_name
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
-  ADD PRIMARY KEY (`book_id`);
+  ADD PRIMARY KEY (`book_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `customer`
@@ -107,7 +110,17 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `book_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `books`
+--
+ALTER TABLE `books`
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `customer` (`user_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

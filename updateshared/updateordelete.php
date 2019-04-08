@@ -21,15 +21,17 @@
         $query = "select book_name, author, edition, genre, description from books where book_id = '$bookid'";
         $result = mysqli_query($con, $query);
         $rows = mysqli_fetch_assoc($result);
-        $book_name = $rows['book_name'];
-        $author = $rows['author'];
-        $edition = $rows['edition'];
-        $genre = $rows['genre'];
-        $description = $rows['description'];
+        $book_name = urlencode($rows['book_name']);
+        $author = urlencode($rows['author']);
+        $edition = urlencode($rows['edition']);
+        $genre = urlencode($rows['genre']);
+        $description = urlencode($rows['description']);
         // $query = "delete from books where book_id = '$bookid'";
         // mysqli_query($con, $query);
         
         $_SESSION['book_id'] = $bookid;
-        header("Location: updatebook/updatebook.php?&book_name=".$book_name."&author=".$author."&edition=".$edition."&genre=".$genre."&description=".$description); // Done till here
+        header("Location: updatebook/updatebook.php?&book_name=$book_name&author=$author&edition=$edition&genre=$genre&description=$description");
+        // "&edition=".$edition);
+        // ."&edition=".$edition."&genre=".$genre."&description=".$description); // Done till here
     }
 ?>
